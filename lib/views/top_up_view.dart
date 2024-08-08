@@ -60,7 +60,8 @@ class _TopUpViewState extends State<TopUpView> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
-              onPressed: selectedAmount != null ? () => _topUp(viewModel) : null,
+              onPressed:
+                  selectedAmount != null ? () => _topUp(viewModel) : null,
               child: const Text('Confirm Top-Up'),
             ),
           ),
@@ -71,7 +72,8 @@ class _TopUpViewState extends State<TopUpView> {
 
   void _topUp(BeneficiaryViewModel viewModel) {
     final amount = selectedAmount ?? 0;
-    if (viewModel.userBalance >= amount + 1) { // Include transaction fee
+    if (viewModel.userBalance >= amount + 1) {
+      // Include transaction fee
       viewModel.topUpBeneficiary(widget.beneficiary, amount);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Top-Up Successful')),

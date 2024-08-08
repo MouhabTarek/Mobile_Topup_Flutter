@@ -1,5 +1,5 @@
 class Beneficiary {
-  final String id;
+  late final String id;
   final String nickname;
   final String phoneNumber;
 
@@ -26,4 +26,18 @@ class Beneficiary {
       'phoneNumber': phoneNumber,
     };
   }
+}
+
+class Transaction {
+  final Beneficiary beneficiary;
+  final int amount;
+  final String date;
+
+  Transaction({
+    required this.beneficiary,
+    required this.amount,
+    required this.date
+  });
+
+
 }
