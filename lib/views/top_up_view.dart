@@ -74,9 +74,10 @@ class _TopUpViewState extends State<TopUpView> {
     final amount = selectedAmount ?? 0;
     if (viewModel.userBalance >= amount + 1) {
       // Include transaction fee
-      viewModel.topUpBeneficiary(widget.beneficiary, amount);
+      String tryTransaction =
+          viewModel.topUpBeneficiary(widget.beneficiary, amount);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Top-Up Successful')),
+        SnackBar(content: Text(tryTransaction)),
       );
       Navigator.pop(context);
     } else {

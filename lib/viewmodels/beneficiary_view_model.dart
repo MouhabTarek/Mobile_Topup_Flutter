@@ -55,7 +55,7 @@ class BeneficiaryViewModel extends ChangeNotifier {
     notifyListeners(); // Notify listeners after adding a new beneficiary
   }
 
-  void topUpBeneficiary(Beneficiary beneficiary, int amount) {
+  String topUpBeneficiary(Beneficiary beneficiary, int amount) {
     if (_userBalance >= amount + 1) {
       // Add a charge of AED 1 for the transaction
       _userBalance -= (amount +
@@ -68,14 +68,18 @@ class BeneficiaryViewModel extends ChangeNotifier {
 
         notifyListeners();
         print('Top-Up Successful for ${beneficiary.nickname}');
+
+        return 'Top-Up Successful for ${beneficiary.nickname}';
       } else {
         _userBalance += (amount + 1); // rollback the transaction
         print('Top-Up Failed: Exceeded monthly limit');
+        return 'Top-Up Failed: Exceeded monthly limit';
       }
     } else {
       _userBalance += (amount + 1); // rollback the transaction
 
       print('Top-Up Failed: Insufficient balance');
+      return 'Top-Up Failed: Insufficient balance';
     }
   }
 
