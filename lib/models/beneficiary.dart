@@ -33,11 +33,6 @@ class Transaction {
   final int amount;
   final String date;
 
-  Transaction({
-    required this.beneficiary,
-    required this.amount,
-    required this.date
-  });
-
-
+  Transaction(
+      {required this.beneficiary, required this.amount, required this.date});
 }
